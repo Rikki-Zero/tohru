@@ -1,5 +1,4 @@
 #include "valueType.h"
-#include "baseType.h"
 
 /* init function */
 k_valueType* k_valueType_init(k_valueType* value, k_type type) {
@@ -99,7 +98,10 @@ void k_valueType_set_char(k_valueType* value, k_char c) {
 
 void k_valueType_set_string(k_valueType* value, const k_char* str) {
     assert(value->value_type == k_string_t);
-    value->data.v_string = strdup(str);
+    k_size size = strlen(str) * sizeof(k_char);
+    k_char *dup_str = malloc(size);
+    memcpy(dup_str, str, size);
+    value->data.v_string = dup_str;
 }
 
 void k_valueType_set_int8(k_valueType* value, k_int8 i8) {
