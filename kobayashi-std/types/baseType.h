@@ -47,7 +47,7 @@ typedef enum {
 #endif
 
 // type list
-enum k_type {
+typedef enum {
     k_int8_t,
     k_uint8_t,
     k_int16_t,
@@ -64,7 +64,7 @@ enum k_type {
     k_ptr_t,
     k_char_t,
     k_size_t
-};
+} k_type;
 
 
 #endif
