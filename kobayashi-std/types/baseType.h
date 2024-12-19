@@ -46,7 +46,25 @@ typedef enum {
     #define k_ALIGN(x) __attribute__((aligned(x)))
 #endif
 
-
+// type list
+enum k_type {
+    k_int8_t,
+    k_uint8_t,
+    k_int16_t,
+    k_uint16_t,
+    k_int32_t,
+    k_uint32_t,
+    k_int64_t,
+    k_uint64_t,
+    k_int128_t,
+    k_uint128_t,
+    k_float32_t,
+    k_float64_t,
+    k_bool_t,
+    k_ptr_t,
+    k_char_t,
+    k_size_t
+};
 
 
 #endif
