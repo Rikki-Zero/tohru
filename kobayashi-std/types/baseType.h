@@ -28,8 +28,8 @@ typedef size_t      k_size;
     typedef unsigned __int64 k_uint128;
 #endif
 
-typedef float       k_float32;  // 32-bit 浮点数
-typedef double      k_float64;  // 64-bit 浮点数
+typedef float       k_float32;
+typedef double      k_float64;
 
 typedef enum {
     False = 0,
