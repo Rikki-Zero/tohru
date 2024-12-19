@@ -18,17 +18,14 @@
       };
     in
       pkgs.mkShell {
-        buildInputs = [
-          pkgs.clang
-          pkgs.bear
-          pkgs.autoconf
-          pkgs.automake
-          pkgs.libtool
-          pkgs.make
-          pkgs.gcc
-          pkgs.git
+        buildInputs = with pkgs; [
+          xmake
+          pkg-config
+          clang-tools
+          llvmPackages_18.clangUseLLVM
         ];
         shellHook = ''
+          unset LD
         '';
       };
   };
