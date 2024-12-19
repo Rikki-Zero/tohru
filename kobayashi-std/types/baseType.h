@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <assert.h>
 
 typedef int8_t      k_int8;
 typedef uint8_t     k_uint8;
@@ -63,6 +64,7 @@ typedef enum {
     k_bool_t,
     k_ptr_t,
     k_char_t,
+    k_string_t,
     k_size_t
 } k_type;
 
