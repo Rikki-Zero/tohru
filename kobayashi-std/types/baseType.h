@@ -13,8 +13,9 @@ typedef uint32_t    k_uint32;
 typedef int64_t     k_int64;
 typedef uint64_t    k_uint64;
 
-typedef intptr_t    k_intptr;
-typedef uintptr_t   k_uintptr;
+typedef void*       k_ptr;
+
+typedef char        k_char;
 
 typedef size_t      k_size;
 
