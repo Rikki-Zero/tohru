@@ -17,6 +17,7 @@ typedef uint64_t    k_uint64;
 typedef void*       k_ptr;
 
 typedef char        k_char;
+typedef char*       k_string;
 
 typedef size_t      k_size;
 
@@ -67,6 +68,5 @@ typedef enum {
     k_string_t,
     k_size_t
 } k_type;
-
 
 #endif
