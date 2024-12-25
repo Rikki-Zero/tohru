@@ -78,7 +78,6 @@ void                k_valueType_set_float64(k_valueType* value, k_float64 f64);
 void                k_valueType_set_ptr(k_valueType* value, k_ptr ptr);
 void                k_valueType_set_type(k_valueType* value, k_type type);
 
-
 extern const k_valueType_handler k_valueType_handlers[];
 #define k_valueType_map_get(type) k_valueType_handlers[type].get
 #define k_valueType_get(object,real_type)       \
@@ -91,6 +90,9 @@ extern const k_valueType_handler k_valueType_handlers[];
     ((void (*)(k_valueType*, real_type))        \
         k_valueType_map_set(real_type##_t))     \
         (object,value)
+
+/* memory safe */
+void                k_valueType_release(k_valueType *value);
 
 #endif
 

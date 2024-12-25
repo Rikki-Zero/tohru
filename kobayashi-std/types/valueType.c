@@ -181,3 +181,29 @@ const k_valueType_handler k_valueType_handlers[] = {
     [k_string_t] = {  k_valueType_get_string,  k_valueType_set_string },
     [k_ptr_t] = {  k_valueType_get_ptr,  k_valueType_set_ptr }
 };
+
+/* memory safe */
+void k_valueType_release(k_valueType *value) {
+    assert(value != NULL);
+
+    switch (value->value_type) {
+        case k_string_t:
+            if (value->data.v_string) {
+                free(value->data.v_string);
+                value->data.v_string = NULL;
+            }
+            break;
+        case k_ptr_t:
+            if (value->data.v_pointer) {
+                free(value->data.v_pointer);
+                value->data.v_pointer = NULL;
+            }
+            break;
+        default:
+            /* It is not necessary to release additional memory for non-pointer types */
+            break;
+    }
+
+    /* Reset value_type and data state */
+    value->value_type = k_undefined_t;
+}
