@@ -21,10 +21,16 @@ typedef struct {
         k_float64   v_double;
         k_char      v_char;
         k_bool      v_bool;
-        k_char      *v_string;
+        k_string    v_string;
         k_ptr       v_pointer;
     } data;
 } k_valueType;
+
+typedef struct {
+    void *get;
+    void *set;
+} k_valueType_handler;
+
 
 /* init function */
 k_valueType*         k_valueType_init(k_valueType* value, k_type type);
@@ -32,7 +38,7 @@ k_valueType*         k_valueType_init(k_valueType* value, k_type type);
 /* get function */
 k_bool              k_valueType_get_bool(k_valueType* value);
 k_char              k_valueType_get_char(k_valueType* value);
-const k_char*       k_valueType_get_string(k_valueType* value);
+k_string            k_valueType_get_string(k_valueType* value);
 
 k_int8              k_valueType_get_int8(k_valueType* value);
 k_int16             k_valueType_get_int16(k_valueType* value);
@@ -72,6 +78,19 @@ void                k_valueType_set_float64(k_valueType* value, k_float64 f64);
 void                k_valueType_set_ptr(k_valueType* value, k_ptr ptr);
 void                k_valueType_set_type(k_valueType* value, k_type type);
 
+
+extern const k_valueType_handler k_valueType_handlers[];
+#define k_valueType_map_get(type) k_valueType_handlers[type].get
+#define k_valueType_get(object,real_type)       \
+    ((real_type (*)(k_valueType*))              \
+        k_valueType_map_get(real_type##_t))     \
+        (object)
+
+#define k_valueType_map_set(type) k_valueType_handlers[type].set
+#define k_valueType_set(object,real_type,value) \
+    ((void (*)(k_valueType*, real_type))        \
+        k_valueType_map_set(real_type##_t))     \
+        (object,value)
 
 #endif
 

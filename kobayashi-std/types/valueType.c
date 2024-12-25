@@ -1,4 +1,5 @@
 #include "valueType.h"
+#include "baseType.h"
 
 /* init function */
 k_valueType* k_valueType_init(k_valueType* value, k_type type) {
@@ -21,7 +22,7 @@ k_char k_valueType_get_char(k_valueType* value) {
     return value->data.v_char;
 }
 
-const k_char* k_valueType_get_string(k_valueType* value) {
+k_string k_valueType_get_string(k_valueType* value) {
     assert(value->value_type == k_string_t);
     return value->data.v_string;
 }
@@ -162,3 +163,21 @@ void k_valueType_set_ptr(k_valueType* value, k_ptr ptr) {
 void k_valueType_set_type(k_valueType* value, k_type type) {
     value->value_type = type;
 }
+
+
+const k_valueType_handler k_valueType_handlers[] = {
+    [k_bool_t] = {  k_valueType_get_bool,  k_valueType_set_bool },
+    [k_char_t] = {  k_valueType_get_char,  k_valueType_set_char },
+    [k_int8_t] = {  k_valueType_get_int8,  k_valueType_set_int8 },
+    [k_int16_t] = {  k_valueType_get_int16,  k_valueType_set_int16 },
+    [k_int32_t] = {  k_valueType_get_int32,  k_valueType_set_int32 },
+    [k_int64_t] = {  k_valueType_get_int64,  k_valueType_set_int64 },
+    [k_uint8_t] = {  k_valueType_get_uint8,  k_valueType_set_uint8 },
+    [k_uint16_t] = {  k_valueType_get_uint16,  k_valueType_set_uint16 },
+    [k_uint32_t] = {  k_valueType_get_uint32,  k_valueType_set_uint32 },
+    [k_uint64_t] = {  k_valueType_get_uint64,  k_valueType_set_uint64 },
+    [k_float32_t] = {  k_valueType_get_float32,  k_valueType_set_float32 },
+    [k_float64_t] = {  k_valueType_get_float64,  k_valueType_set_float64 },
+    [k_string_t] = {  k_valueType_get_string,  k_valueType_set_string },
+    [k_ptr_t] = {  k_valueType_get_ptr,  k_valueType_set_ptr }
+};
