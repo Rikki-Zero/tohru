@@ -21,6 +21,8 @@ typedef char*       k_string;
 
 typedef size_t      k_size;
 
+#define k_undefined NULL;
+
 #if defined(__GNUC__) || defined(__clang__)
     typedef __int128    k_int128;
     typedef unsigned __int128 k_uint128;
@@ -66,7 +68,8 @@ typedef enum {
     k_ptr_t,
     k_char_t,
     k_string_t,
-    k_size_t
+    k_size_t,
+    k_undefined_t
 } k_type;
 
 #endif
