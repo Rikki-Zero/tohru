@@ -5,4 +5,7 @@
 #include "./types/baseType.h"
 #include "./types/valueType.h"
 
+// io
+#include "./io/fmt.h"
+
 #endif
