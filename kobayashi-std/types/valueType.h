@@ -1,5 +1,5 @@
-#ifndef kobayashi_std__container__duckType_h
-#define kobayashi_std__container__duckType_h
+#ifndef kobayashi_std__types__valueType_h
+#define kobayashi_std__types__valueType_h
 
 #include <stdio.h>
 #include <stdlib.h>
