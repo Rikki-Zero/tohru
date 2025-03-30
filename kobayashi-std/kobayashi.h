@@ -8,4 +8,7 @@
 // io
 #include "./io/fmt.h"
 
+// container
+#include "./container/dynamicArray.h"
+
 #endif
